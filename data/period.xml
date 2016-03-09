@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ACIT 4850
+Damian Kim
+Pablo Ramos
+
+Period perspective
+-->
+
+<!DOCTYPE term4 SYSTEM 'period.dtd'>
+<term4>
+    <timetable>
+        <period start="1030">
+            <course type="lab">
+                <name>ACIT 4620</name>
+                <instructor>Bethany Edmunds</instructor>
+                <room>SE12 306</room>
+                <class day="Tuesday" duration="2" />
+            </course>           
+            <course type="lab">
+                <name>ACIT 4660</name>
+                <instructor>Steve Fabzinsk</instructor>
+                <room>SE12 306</room>
+                <class day="Wednesday" duration="2" />
+            </course>       
+            <course type="lab">
+                <name>ACIT 4850</name>
+                <instructor>James Perry</instructor>
+                <room>SE12 320</room>
+                <class day="Thursday" duration="2" />
+            </course>                               
+        </period>
+    </timetable>
+</term4>

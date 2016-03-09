@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!--
+    TODO define vocabulary identification data
+    PUBLIC ID  : -//vendor//vocabulary//EN
+    SYSTEM ID  : http://server/path/__NAME__
+-->
+
+<!-- TODO define your own vocabulary/syntax. Example follows:  -->
+<!ELEMENT term4 (timetable)>
+<!ELEMENT timetable (course)+>
+
+<!ELEMENT course (class*)>
+<!ATTLIST course id CDATA #REQUIRED>
+
+<!ELEMENT class (name, instructor, room)>
+<!ATTLIST class
+type (lecture|lab|tutorial) #REQUIRED
+day (Monday|Tuesday|Wednesday|Thursday|Friday) #REQUIRED
+start (830|930|1030|1130|1230|1330|1430|1530|1630) #REQUIRED
+end (920|1020|1120|1220|1320|1420|1520|1620|1720) #REQUIRED
+>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT instructor (#PCDATA)>
+<!ELEMENT room (#PCDATA)>
+
+
+
+
+
