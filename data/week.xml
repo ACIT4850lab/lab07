@@ -7,27 +7,24 @@ Pablo Ramos
 Week perspective
 -->
 
-<!DOCTYPE term4 SYSTEM 'week.dtd'>
-
-<term4>
-    <timetable day="Monday">
-        <course type="tutorial">
-            <name>ACIT 4770</name>
-            <instructor>Trevor Lord</instructor>
-            <room>SE12 306</room>
-            <period start="1330" end="1520"/>
-        </course>
-        <course type="lecture">
-            <name>ACIT 4910</name>
-            <instructor>Richard Chau</instructor>
-            <room>SW9 206</room>
-            <period start="1530" end="1620"/>
-        </course>
-        <course type="lecture">
-            <name>ACIT 4650</name>
-            <instructor>Medhat Elmasry</instructor>
-            <room>SE6 205</room>
-            <period start="1430" end="1720"/>
-        </course>
-    </timetable>
-</term4>
+<!DOCTYPE term4 SYSTEM 'timetable.dtd'>
+<day day="Monday">
+    <booking type="tutorial">
+        <name>ACIT 4770</name>
+        <instructor>Trevor Lord</instructor>
+        <room>SE12 306</room>
+        <period start="1330" end="1520"/>
+    </booking>
+    <booking type="lecture">
+        <name>ACIT 4910</name>
+        <instructor>Richard Chau</instructor>
+        <room>SW9 206</room>
+        <period start="1530" end="1620"/>
+    </booking>
+    <booking type="lecture">
+        <name>ACIT 4650</name>
+        <instructor>Medhat Elmasry</instructor>
+        <room>SE6 205</room>
+        <period start="1430" end="1720"/>
+    </booking>
+</day>
