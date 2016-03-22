@@ -8,21 +8,17 @@ Course perspective
 -->
 
 <!DOCTYPE term4 SYSTEM 'timetable.dtd'>
-<term4>
-    <timetable>
-        <course id="4850">
-            <booking type="tutorial" day="Thursday">
-                <name>ACIT 4850</name>
-                <instructor>James Perry</instructor>
-                <room>SE12 306</room>
-                <period start="1030" end="1220"></period>
-            </booking>                   
-            <booking type="lecture" day="Wednesday" >
-                <name>ACIT 4850</name>
-                <instructor>James Perry</instructor>
-                <room>SE12 306</room>
-                <period start="1230" end="1420"></period>
-            </booking>                           
-        </course>
-    </timetable>
-</term4>
+<course id="4850">
+    <booking type="tutorial" day="Thursday">
+        <name>ACIT 4850</name>
+        <instructor>James Perry</instructor>
+        <room>SE12 306</room>
+        <period start="1030" end="1220"></period>
+    </booking>                   
+    <booking type="lecture" day="Wednesday" >
+        <name>ACIT 4850</name>
+        <instructor>James Perry</instructor>
+        <room>SE12 306</room>
+        <period start="1230" end="1420"></period>
+    </booking>                           
+</course>

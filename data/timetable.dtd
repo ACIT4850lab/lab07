@@ -11,14 +11,6 @@ and open the template in the editor.
     SYSTEM ID  : http://server/path/__NAME__
 -->
 
-<!-- TODO define your own vocabulary/syntax. Example follows:  -->
-<!ELEMENT term4 (timetable)>
-
-<!ELEMENT timetable (booking+|period+|course+)>
-<!ATTLIST timetable
-    day (Monday|Tuesday|Wednesday|Thursday|Friday) #IMPLIED
->
-
 <!ELEMENT course (booking*)>
 <!ATTLIST course 
 id CDATA #REQUIRED
@@ -40,3 +32,8 @@ type (lecture|lab|tutorial) #IMPLIED
 <!ELEMENT name (#PCDATA)>
 <!ELEMENT instructor (#PCDATA)>
 <!ELEMENT room (#PCDATA)>
+
+<!ELEMENT day (booking*)>
+<!ATTLIST day
+    day (Monday|Tuesday|Wednesday|Thursday|Friday) #REQUIRED
+>
