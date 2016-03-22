@@ -5,10 +5,10 @@
  *
  * @author jim
  */
-class Course extends CI_Model {
+class Week extends CI_Model {
 
     protected $xml = null;
-    protected $id = '';
+    protected $day = '';
     protected $bookings = array();
 
     // Constructor
@@ -20,7 +20,7 @@ class Course extends CI_Model {
         $this->xml = simplexml_load_file(DATAPATH . $filename . XMLSUFFIX);
 
         // extract basics
-        $this->id = (string) $this->xml['id'];
+        $this->day = (string)$this->xml['day'];
 
         foreach ($this->xml->booking as $one) {
             $this->bookings[] = $this->makeBooking($one);
@@ -33,7 +33,7 @@ class Course extends CI_Model {
         $record = new stdClass();
         
         $record->type =  (string) $element['type'];
-        $record->day = (string) $element['day'];
+        $record->day = (string) $this->day;
         $record->name = (string) $element->name;
         $record->instructor = (string) $element->instructor;
         $record->room = (string) $element->room;
@@ -44,8 +44,8 @@ class Course extends CI_Model {
     }
 
     // return the customer name
-    function getId() {
-        return $this->id;
+    function getDay() {
+        return $this->day;
     }
 
     // return the array of burgers in this order

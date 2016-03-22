@@ -5,10 +5,11 @@
  *
  * @author jim
  */
-class Course extends CI_Model {
+class Period extends CI_Model {
 
     protected $xml = null;
-    protected $id = '';
+    protected $start = '';
+    protected $end = '';
     protected $bookings = array();
 
     // Constructor
@@ -20,7 +21,8 @@ class Course extends CI_Model {
         $this->xml = simplexml_load_file(DATAPATH . $filename . XMLSUFFIX);
 
         // extract basics
-        $this->id = (string) $this->xml['id'];
+        $this->start = (string) $this->xml['start'];
+        $this->end = (string) $this->xml['end'];
 
         foreach ($this->xml->booking as $one) {
             $this->bookings[] = $this->makeBooking($one);
@@ -37,16 +39,21 @@ class Course extends CI_Model {
         $record->name = (string) $element->name;
         $record->instructor = (string) $element->instructor;
         $record->room = (string) $element->room;
-        $record->start = (string) $element->period['start'];
-        $record->end = (string) $element->period['end'];
+        $record->start = $this->start;
+        $record->end = $this->end;
   
         return $record;
     }
 
     // return the customer name
-    function getId() {
-        return $this->id;
+    function getStart() {
+        return $this->start;
     }
+
+    // return the customer name
+    function getEnd() {
+        return $this->start;
+    }    
 
     // return the array of burgers in this order
     function getBookings() {
