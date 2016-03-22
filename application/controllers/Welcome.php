@@ -6,6 +6,8 @@ class Welcome extends Application {
         function __construct() {
             parent::__construct();
             $this->load->model('course');
+            $this->load->model('period');
+            $this->load->model('week'); 
 
         }
 
@@ -36,9 +38,8 @@ class Welcome extends Application {
             // Build a receipt for the chosen order
             $course = new Course($filename);
 
-            $this->data['filename'] = $filename;
-            $this->data['id'] = $course->getId();
-
+            $this->data['filename'] = $filename;    
+            $this->data['item_title'] = $course->getId();
 
             $details = '';
             foreach ($course->getBookings() as $booking)
@@ -51,24 +52,45 @@ class Welcome extends Application {
             $this->render();
         }        
         
+        function Period($filename) {
+            // Build a receipt for the chosen order
+            $period = new Period($filename);
+
+            $this->data['filename'] = $filename;
+            $this->data['item_title'] = $period->getStart();
+
+            $details = '';
+            foreach ($period->getBookings() as $booking)
+                $details .= $this->singleBooking($booking);
+
+            // Present this burger
+            $this->data['details'] = $details;
+
+            $this->data['pagebody'] = 'justone';
+            $this->render();
+        }        
+        
+        function Week($filename) {
+            // Build a receipt for the chosen order
+            $week = new Week($filename);
+
+            $this->data['filename'] = $filename;
+            $this->data['item_title'] = $week->getDay();
+
+            $details = '';
+            foreach ($week->getBookings() as $booking)
+                $details .= $this->singleBooking($booking);
+
+            // Present this burger
+            $this->data['details'] = $details;
+
+            $this->data['pagebody'] = 'justone';
+            $this->render();
+        }   
         
         // present a receipt for a single burger
         function singleBooking($booking) {
-            /*
-        $record->type = (string) $element->xml['type'];
-        $record->day = (string) $element->xml['day'];
-        $record->name = (string) $element->name;
-        $record->instructor = (string) $element->instructor;
-        $record->room = (string) $element->room;
-        $record->start = (string) $element->period['start'];
-        $record->end = (string) $element->period['end'];
-        */
-            $parms['name'] = (isset($booking->name)) ? $booking->name : 'qwe';
-            $parms['instructor'] = (isset($booking->instructions)) ? '** instructor ** ' . $booking->instructor : '';
-
-
-
-            return $this->parser->parse('abooking', $parms, true);
+            return $this->parser->parse('abooking', $booking, true);
         }        
         
 }

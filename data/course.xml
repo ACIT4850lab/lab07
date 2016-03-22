@@ -8,7 +8,7 @@ Course perspective
 -->
 
 <!DOCTYPE term4 SYSTEM 'timetable.dtd'>
-<course id="4850">
+<course id="ACIT4850">
     <booking type="tutorial" day="Thursday">
         <name>ACIT 4850</name>
         <instructor>James Perry</instructor>
