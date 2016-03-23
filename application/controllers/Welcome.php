@@ -97,18 +97,46 @@ class Welcome extends Application {
         }   
         
         function Search() {
+            
             // Build a receipt for the chosen order
+            $details_course = '';
             $course = new Course("Course");
-      
-            $this->data['item_title'] = $course->getId();
-
-            $details = '';
-            foreach ($course->getBookings() as $booking)
-                $details .= $this->singleBooking($booking);
+            foreach ($course->getBookings() as $booking){
+                
+                if ($booking->start == $_POST['ddTime'] && $booking->day == $_POST['ddDay'])
+                {
+                    $details_course .= $this->singleBooking($booking);
+                }
+            }
+            
+            $details_period='';
+            $period = new Period("Period");
+            foreach ($period->getBookings() as $booking){
+                
+                if ($booking->start == $_POST['ddTime'] && $booking->day == $_POST['ddDay'])
+                {
+                    $details_period .= $this->singleBooking($booking);
+                }
+            } 
+            
+            $details_week = '';
+            $week = new Week("Week");
+            foreach ($week->getBookings() as $booking){
+                
+                if ($booking->start == $_POST['ddTime'] && $booking->day == $_POST['ddDay'])
+                {
+                    $details_week .= $this->singleBooking($booking);
+                }
+            }                
 
             // Present this burger
-            $this->data['details'] = $details;
-
+            $this->data['details_course'] = $details_course;
+            $this->data['details_period'] = $details_period;
+            $this->data['details_week'] = $details_week;
+            
+            $this->data['ddDay'] = $_POST['ddDay'];
+            $this->data['ddTime'] = $_POST['ddTime'];
+            
             $this->data['pagebody'] = 'search';
             $this->render();
         }        
