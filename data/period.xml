@@ -7,7 +7,8 @@ Pablo Ramos
 Period perspective
 -->
 
-<!DOCTYPE term4 SYSTEM 'timetable.dtd'>
+<timetable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="timetable.xsd">
 <period start="1030" end="1220">
     <booking type="lab" day="Tuesday">
         <name>ACIT 4620</name>
@@ -25,4 +26,4 @@ Period perspective
         <room>SE12 320</room>
     </booking>         
 </period>
-
+</timetable>
