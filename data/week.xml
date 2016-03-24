@@ -29,3 +29,4 @@ xsi:noNamespaceSchemaLocation="timetable.xsd">
         <period start="1430" end="1720"/>
     </booking>
 </day>
+</timetable>

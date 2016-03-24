@@ -26,4 +26,4 @@ xsi:noNamespaceSchemaLocation="timetable.xsd">
         <room>SE12 320</room>
     </booking>         
 </period>
-
+</timetable>

@@ -45,14 +45,14 @@ and open the template in the editor.
 	
     <xs:complexType name="Tcourseid">
         <xs:sequence>
-            <xs:element name="booking" type="Tbooking"/>
+            <xs:element name="booking" type="Tbooking" minOccurs="1" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:string" use="required"/>
     </xs:complexType>
 	
     <xs:complexType name="Tperiod">
         <xs:sequence>
-            <xs:element name="booking" type="Tbooking"/>
+            <xs:element name="booking" type="Tbooking" minOccurs="1" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute name="start" type="Ttime" use="required"/>
         <xs:attribute name="end" type="Ttime" use="required"/>
@@ -70,9 +70,9 @@ and open the template in the editor.
             <xs:element name="name" type="xs:string"/>
             <xs:element name="instructor" type="xs:string"/>
             <xs:element name="room" type="xs:string"/>
-            <xs:element name="period" type="Ttime"/>
+            <xs:element name="period" type="Tperiod"  minOccurs="0" maxOccurs="1"/>
         </xs:sequence>
-        <xs:attribute name="type" type="Ttime" use="required"/>
+        <xs:attribute name="type" type="Tcourse" use="required"/>
         <xs:attribute name="day" type="Tday" use="optional"/>
     </xs:complexType>
 	

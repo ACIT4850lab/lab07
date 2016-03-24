@@ -14,12 +14,13 @@ xsi:noNamespaceSchemaLocation="timetable.xsd">
         <name>ACIT 4850</name>
         <instructor>James Perry</instructor>
         <room>SE12 306</room>
-        <period start="1030" end="1220"></period>
+        <period start="1030" end="1220"/>
     </booking>                   
     <booking type="lecture" day="Wednesday" >
         <name>ACIT 4850</name>
         <instructor>James Perry</instructor>
         <room>SE12 306</room>
-        <period start="1230" end="1420"></period>
+        <period start="1230" end="1420"/>
     </booking>                           
 </course>
+</timetable>
