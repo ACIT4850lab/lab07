@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+    <!-- time is a 4 digit time -->
+    <xs:simpleType name="Ttime">
+        <xs:restriction base="xs:integer">
+            <xs:pattern value="[0-2][0-9][0-5][0-9]"/>
+        </xs:restriction>
+    </xs:simpleType>
+  
+    <xs:simpleType name="Tcourse">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="lecture"/>
+            <xs:enumeration value="lab"/>
+            <xs:enumeration value="tutorial"/>
+        </xs:restriction>
+    </xs:simpleType>
+  
+    <xs:simpleType name="Tday">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Monday"/>
+            <xs:enumeration value="Tuesday"/>
+            <xs:enumeration value="Wednesday"/>
+            <xs:enumeration value="Thursday"/>
+            <xs:enumeration value="Friday"/>
+        </xs:restriction>
+    </xs:simpleType>
+   
+    <xs:element name="timetable">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="course" type="Tcourseid"/>
+                <xs:element name="period" type="Tperiod"/>
+                <xs:element name="day" type="Tday1"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+	
+    <xs:complexType name="Tcourseid">
+        <xs:sequence>
+            <xs:element name="booking" type="Tbooking" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+    </xs:complexType>
+	
+    <xs:complexType name="Tperiod">
+        <xs:sequence>
+            <xs:element name="booking" type="Tbooking" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="start" type="Ttime" use="required"/>
+        <xs:attribute name="end" type="Ttime" use="required"/>
+    </xs:complexType>
+	
+    <xs:complexType name="Tday1">
+        <xs:sequence>
+            <xs:element name="booking" type="Tbooking" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="day" type="Tday" use="required"/>
+    </xs:complexType>
+	
+    <xs:complexType name="Tbooking">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="instructor" type="xs:string"/>
+            <xs:element name="room" type="xs:string"/>
+            <xs:element name="period" type="Tperiod"  minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="type" type="Tcourse" use="required"/>
+        <xs:attribute name="day" type="Tday" use="optional"/>
+    </xs:complexType>
+	
+</xs:schema>

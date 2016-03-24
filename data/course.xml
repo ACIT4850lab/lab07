@@ -7,18 +7,20 @@ Pablo Ramos
 Course perspective
 -->
 
-<!DOCTYPE term4 SYSTEM 'timetable.dtd'>
+<timetable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="timetable.xsd">
 <course id="ACIT4850">
     <booking type="tutorial" day="Thursday">
         <name>ACIT 4850</name>
         <instructor>James Perry</instructor>
         <room>SE12 306</room>
-        <period start="1030" end="1220"></period>
+        <period start="1030" end="1220"/>
     </booking>                   
     <booking type="lecture" day="Wednesday" >
         <name>ACIT 4850</name>
         <instructor>James Perry</instructor>
         <room>SE12 306</room>
-        <period start="1230" end="1420"></period>
+        <period start="1230" end="1420"/>
     </booking>                           
 </course>
+</timetable>

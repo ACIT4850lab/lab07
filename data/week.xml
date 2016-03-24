@@ -7,7 +7,8 @@ Pablo Ramos
 Week perspective
 -->
 
-<!DOCTYPE term4 SYSTEM 'timetable.dtd'>
+<timetable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="timetable.xsd">
 <day day="Monday">
     <booking type="tutorial">
         <name>ACIT 4770</name>
@@ -28,3 +29,4 @@ Week perspective
         <period start="1430" end="1720"/>
     </booking>
 </day>
+</timetable>
