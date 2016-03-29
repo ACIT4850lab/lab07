@@ -21,6 +21,9 @@ class Welcome extends Application {
         //-------------------------------------------------------------
 	public function index()
 	{
+            // Only putting html tags here because it's a hypotethical use
+            $validation = "Schema Validation<br />";
+            
             // Build a list of orders
             $this->load->helper('directory');
             $candidates = directory_map(DATAPATH);
@@ -28,18 +31,42 @@ class Welcome extends Application {
             foreach ($candidates as $file) {
                 if (substr_compare($file, XMLSUFFIX, strlen($file) - strlen(XMLSUFFIX), strlen(XMLSUFFIX)) === 0)
                     // exclude our menu
-                    if ($file != 'master.xml')
+                    if ($file != 'timetable.xsd' )
+                    {
                         // trim the suffix
                         $bookings[] = array('filename' => substr($file, 0, -4));
+                        $validation.=$this->validate(DATAPATH . $file);
+                    }
             }
             $this->data['bookings'] = $bookings;
             $this->data['ddDayOptions'] = $this->timetable->getDaysOptions();
             $this->data['ddTimeOptions'] = $this->timetable->getTimeOptions();
+            $this->data['xmlValidation'] = $validation;
             
             // Present the list to choose from
             $this->data['pagebody'] = 'homepage';
             $this->render();
 	}
+        
+        public function validate($fileName)
+        {
+            $result ='';
+            $doc = new DOMDocument();
+            $doc->load($fileName);
+            $result .= $fileName;
+            libxml_use_internal_errors(true);
+            if ($doc->schemaValidate(DATAPATH.'timetable.xsd'))
+             return '<br />'.$fileName.' : Validated against schema successfully';
+            else {
+             $result .= "<b>Oh nooooo...</b><br/>";
+             foreach (libxml_get_errors() as $error) {
+             $result .= $error->message . '<br/>';
+             }
+            }
+            
+            return $result;
+        }
+        
         
         function Course($filename) {
             // Build a receipt for the chosen order
