@@ -1,6 +1,10 @@
 <div class="row">
     <h2>Bookings</h2>
     
+    <div>
+        {xmlValidation}
+    </div>
+    
     <form id="welcome" name="welcome" action="welcome/search" method="post">
         Search bookings:
         <select id="ddDay" name="ddDay">                      
@@ -15,8 +19,7 @@
         </select>   
         <input class="abutton" type="submit" name="Search" value="Search" />
     </form>
-    
-    
+        
     {bookings}
     <p><a href="/welcome/{filename}/{filename}">{filename}</a></p>
     {/bookings}

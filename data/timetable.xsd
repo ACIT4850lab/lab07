@@ -1,20 +1,25 @@
 <?xml version="1.0"?>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+Developed by:
 
+Damian Kim
+Pablo Ramos
+
+Timetable schema for ACIT 4850 lab 9
+
+-->
 <xs:schema version="1.0"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            elementFormDefault="qualified">
+    
     <!-- time is a 4 digit time -->
     <xs:simpleType name="Ttime">
         <xs:restriction base="xs:integer">
             <xs:pattern value="[0-2][0-9][0-5][0-9]"/>
         </xs:restriction>
     </xs:simpleType>
-  
+    
+    <!-- course: holds course type information-->
     <xs:simpleType name="Tcourse">
         <xs:restriction base="xs:string">
             <xs:enumeration value="lecture"/>
@@ -23,6 +28,7 @@ and open the template in the editor.
         </xs:restriction>
     </xs:simpleType>
   
+    <!-- day: days of a week -->
     <xs:simpleType name="Tday">
         <xs:restriction base="xs:string">
             <xs:enumeration value="Monday"/>
@@ -33,6 +39,7 @@ and open the template in the editor.
         </xs:restriction>
     </xs:simpleType>
    
+   <!-- timetable: holds differents perspetives of the timetable -->
     <xs:element name="timetable">
         <xs:complexType>
             <xs:choice>
@@ -43,6 +50,7 @@ and open the template in the editor.
         </xs:complexType>
     </xs:element>
 	
+    <!-- courseid: open id -->    
     <xs:complexType name="Tcourseid">
         <xs:sequence>
             <xs:element name="booking" type="Tbooking" minOccurs="1" maxOccurs="unbounded"/>
@@ -50,21 +58,24 @@ and open the template in the editor.
         <xs:attribute name="id" type="xs:string" use="required"/>
     </xs:complexType>
 	
+    <!-- period: holds period information -->        
     <xs:complexType name="Tperiod">
         <xs:sequence>
-            <xs:element name="booking" type="Tbooking" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element name="booking" type="Tbooking" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute name="start" type="Ttime" use="required"/>
         <xs:attribute name="end" type="Ttime" use="required"/>
     </xs:complexType>
-	
+    
+    <!-- day1: for specific day property-->
     <xs:complexType name="Tday1">
         <xs:sequence>
-            <xs:element name="booking" type="Tbooking"/>
+            <xs:element name="booking" type="Tbooking" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute name="day" type="Tday" use="required"/>
     </xs:complexType>
 	
+    <!-- booking: holds booking information -->        
     <xs:complexType name="Tbooking">
         <xs:sequence>
             <xs:element name="name" type="xs:string"/>
