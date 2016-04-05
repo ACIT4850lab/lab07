@@ -6,7 +6,7 @@ Pablo Ramos
 
 Period perspective
 -->
-
+<?xml-stylesheet type='text/xsl' href='Period.xsl'?>
 <timetable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:noNamespaceSchemaLocation="timetable.xsd">
 <period start="1030" end="1220">
